@@ -1,0 +1,63 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <math.h>
+double f(double x)
+{
+    return (x*log10(x))-1.2;
+}
+
+
+int main()
+{
+    double a,b,e;
+    printf("Enter 1st root = ");
+    scanf("%lf",&a);
+    printf("\nEnter 2nd root = ");
+    scanf("%lf",&b);
+      printf("\nDefine the input accuracy: = ");
+    scanf("%lf",&e);
+
+    
+    double x;
+    
+    if(f(a)*f(b)<=0)  
+    {  
+        int iter = 1; 
+          
+        printf (" Iteration \t a \t \tb \t\tx \t\tf(x) \t |a - b| \n ");  
+          
+        do {  
+            x = (a+b) /2.0; 
+            printf (" %d \t %lf \t %lf \t %lf \t %lf \t %lf \n", iter, a, b, x, f(x), fabs(a- b));  
+            
+             if (f(x) == 0)  
+            {  
+                x = f(x);  
+                break; 
+            }  
+            if (f(a)*f(x)>0)  
+            {  
+                a = x;  
+            }  
+            else if (f(a)* f(x) < 0)  
+            {  
+                b = x;   
+            }  
+            iter++;   
+        }  
+        while (fabs(a-b)>=e ); 
+         printf (" \nThe root of the given equation is: %lf", x);  
+    }  
+    else  
+    {  
+        printf (" \n The root doesn't exist in the given interval. ");  
+    }
+
+}
